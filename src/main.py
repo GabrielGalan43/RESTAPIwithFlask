@@ -1,13 +1,27 @@
+# ! python3
+# -*- coding: utf-8 -*-
+
+"""
+In this module app instance and database
+will be created.
+"""
+
 import os
 from flask import Flask
 from flask import jsonify
 from api.utils.database import db
 
 def create_app(config):
+    """
+    This function is responsible of create the app
+    instance in with the parameters provided in
+    the config file.
+    """
+
     app = Flask(__name__)
 
     app.config.from_object(config)
-    
+
     db.init_app(app)
     with app.app_context():
         db.create_all()
